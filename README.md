@@ -5,23 +5,15 @@
 QuarkNet is a lightweight Deep learning library that's built entirely with NumPy and supports the essentials needed to train fully-connected feedforward neural networks.
 
 
-### Features
+### 🔸 Features
 
-🔸Fully Connected Linear Layers (`Linear`)
-
-🔸Activation Functions: `Tanh`, `ReLU`, `Sigmoid`
-
-🔸Loss Functions: Mean Squared Error (`MSE`)
-
-🔸Optimizer: Stochastic Gradient Descent (`SGD`)
-
-🔸Mini-batch Training with shuffling
-
-🔸Layer Stacking API for building networks
-
-🔸Prediction & Evaluation support
-
-🔸Pure NumPy Implementation — no external ML frameworks / Dependencies
+- Fully Connected Linear Layers (`Linear`)
+- Activation Functions: `Tanh`, `ReLU`, `Sigmoid`
+- Loss Functions: Mean Squared Error (`MSE`)
+- Optimizer: Stochastic Gradient Descent (`SGD`)
+- Mini-batch Training with shuffling
+- Layer Stacking API for building networks
+- Prediction & Evaluation support
 
 
 ### 🚀 Installation
