@@ -1,9 +1,9 @@
 [project]
 name = "quarknet"
 version = "0.1.0"
-description = "Add your description here"
+description = "QuarkNet is a lightweight Deep learning library that's built entirely with NumPy and supports the essentials needed to train fully-connected feedforward neural networks."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 dependencies = [
     "numpy>=2.3.2",
 ]
