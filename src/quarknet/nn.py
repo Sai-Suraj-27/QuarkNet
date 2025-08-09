@@ -6,13 +6,11 @@ but for our library won't handle them.
 """
 
 from typing import Sequence, Iterator
-import numpy as np
 from numpy import ndarray
 from .layers import Layer
 from .loss import Loss, MSE
 from .optim import Optimizer, SGD
-from .data import DataIterator, BatchIterator
-from quarknet import optim
+from .data import BatchIterator
 
 
 class NeuralNet:
