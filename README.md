@@ -1,4 +1,4 @@
-## QuarkNet
+## QuarkNet ⚡ 
 
 ***A minimal deep learning library built from scratch with just NumPy.***
 
@@ -7,17 +7,24 @@ QuarkNet is a lightweight Deep learning library that's built entirely with NumPy
 
 ### Features
 
-* Fully Connected Linear Layers (`Linear`)
-* Activation Functions: `Tanh`, `ReLU`, `Sigmoid`
-* Loss Functions: Mean Squared Error (`MSE`)
-* Optimizer: Stochastic Gradient Descent (`SGD`)
-* Mini-batch Training with shuffling
-* Layer Stacking API for building networks
-* Prediction & Evaluation support
-* Pure NumPy Implementation — no external ML frameworks / Dependencies
+🔸Fully Connected Linear Layers (`Linear`)
+
+🔸Activation Functions: `Tanh`, `ReLU`, `Sigmoid`
+
+🔸Loss Functions: Mean Squared Error (`MSE`)
+
+🔸Optimizer: Stochastic Gradient Descent (`SGD`)
+
+🔸Mini-batch Training with shuffling
+
+🔸Layer Stacking API for building networks
+
+🔸Prediction & Evaluation support
+
+🔸Pure NumPy Implementation — no external ML frameworks / Dependencies
 
 
-### Installation
+### 🚀 Installation
 
 **Create a virtual environment using [uv](https://docs.astral.sh/uv/getting-started/installation/)**
 
@@ -46,7 +53,7 @@ pip install QuarkNet        # Standard pip install
 ```
 
 
-### Solving the XOR Problem with QuarkNet
+### Solving the XOR Problem with QuarkNet ⚡
 
 The XOR (exclusive OR) problem is a classic example in neural networks because it is non-linear and cannot be solved by a single linear layer.
 
