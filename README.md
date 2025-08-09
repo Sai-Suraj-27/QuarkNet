@@ -91,7 +91,7 @@ print("Predictions:\n", np.round(predictions))
 
 ```
 
-**Expected Output**
+**Output**
 
 ```bash
 Predictions:
