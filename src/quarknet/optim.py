@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from quarknet.nn import NeuralNet
 
+
 class Optimizer:
     def step(self, net: NeuralNet) -> None:
         raise NotImplementedError

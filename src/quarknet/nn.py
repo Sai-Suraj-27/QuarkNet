@@ -70,11 +70,11 @@ class NeuralNet:
         batch_size: int = 32,
         shuffle: bool = True,
     ):
-        total_loss = 0
+        total_loss = 0.0
         iterator = BatchIterator(batch_size=batch_size, shuffle=shuffle)
 
         for batch in iterator(inputs, targets):
             batch_predictions = self.forward(batch.inputs)
             total_loss += loss.loss(batch_predictions, batch.targets)
-        
+
         print(f"Total Loss: {total_loss}")
