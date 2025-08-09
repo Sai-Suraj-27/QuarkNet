@@ -7,7 +7,12 @@ during backpropogation.
 from quarknet.nn import NeuralNet
 
 
-class SGD:
+class Optimizer:
+    def step(self, net: NeuralNet) -> None:
+        raise NotImplementedError
+
+
+class SGD(Optimizer):
     def __init__(self, lr: float = 0.01) -> None:
         self.lr = lr
 

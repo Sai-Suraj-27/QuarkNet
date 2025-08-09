@@ -44,13 +44,14 @@ class Tanh(Activation):
         super().__init__(tanh, tanh_grad)
 
 
-class ReLU:
+def relu(inputs: ndarray) -> ndarray:
+    return np.where(inputs >= 0, inputs, 0)
+
+
+def relu_grad(inputs: ndarray) -> ndarray:
+    return np.where(inputs > 0, 1, 0)
+
+
+class ReLU(Activation):
     def __init__(self) -> None:
-        pass
-
-    def forward(self, inputs: ndarray) -> ndarray:
-        self.inputs = inputs
-        return np.where(inputs >= 0, inputs, 0)
-
-    def backward(self, grad: ndarray) -> ndarray:
-        return grad * np.where(self.inputs > 0, 1, 0)
+        super().__init__(relu, relu_grad)

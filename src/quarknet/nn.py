@@ -8,7 +8,11 @@ but for our library won't handle them.
 from typing import Sequence, Iterator
 import numpy as np
 from numpy import ndarray
-from quarknet.layers import Layer
+from .layers import Layer
+from .loss import Loss, MSE
+from .optim import Optimizer, SGD
+from .data import DataIterator, BatchIterator
+from quarknet import optim
 
 
 class NeuralNet:
@@ -33,3 +37,26 @@ class NeuralNet:
             for parameter_name, parameter_value in layer.params.items():
                 gradient = layer.grad[parameter_name]
                 yield parameter_value, gradient
+
+    def train(
+        self,
+        inputs: ndarray,
+        targets: ndarray,
+        loss: Loss = MSE(),
+        optimizer: Optimizer = SGD(),
+        epochs: int = 5000,
+        batch_size: int = 32,
+        shuffle: bool = True,
+    ) -> None:
+        for epoch in range(epochs):
+            epoch_loss = 0.0
+            iterator = BatchIterator(batch_size=batch_size, shuffle=shuffle)
+
+            for batch in iterator(inputs, targets):
+                batch_predictions = self.forward(batch.inputs)
+                epoch_loss += loss.loss(batch_predictions, batch.targets)
+                loss_grad = loss.grad(batch_predictions, batch.targets)
+                self.backward(loss_grad)
+                optimizer.step(self)
+
+            print(f"Epoch No: {epoch}, Loss: {epoch_loss}")
