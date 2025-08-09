@@ -36,6 +36,9 @@ class NeuralNet:
                 gradient = layer.grad[parameter_name]
                 yield parameter_value, gradient
 
+    def predict(self, inputs: ndarray) -> ndarray:
+        return self.forward(inputs)
+
     def train(
         self,
         inputs: ndarray,
@@ -58,3 +61,20 @@ class NeuralNet:
                 optimizer.step(self)
 
             print(f"Epoch No: {epoch}, Loss: {epoch_loss}")
+
+    def test(
+        self,
+        inputs: ndarray,
+        targets: ndarray,
+        loss: Loss = MSE(),
+        batch_size: int = 32,
+        shuffle: bool = True,
+    ):
+        total_loss = 0
+        iterator = BatchIterator(batch_size=batch_size, shuffle=shuffle)
+
+        for batch in iterator(inputs, targets):
+            batch_predictions = self.forward(batch.inputs)
+            total_loss += loss.loss(batch_predictions, batch.targets)
+        
+        print(f"Total Loss: {total_loss}")

@@ -1,5 +1,5 @@
 """
-We will give inputs into our network in batches.
+Inputs to the Neural Network will go in batches.
 """
 
 import numpy as np

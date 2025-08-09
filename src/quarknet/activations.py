@@ -15,8 +15,8 @@ class Activation(Layer):
     """
     Activation Layers just apply a function elementwise to it's inputs
     """
-
     def __init__(self, f: F, f_grad: F) -> None:
+        super().__init__()
         self.f = f
         self.f_grad = f_grad
 

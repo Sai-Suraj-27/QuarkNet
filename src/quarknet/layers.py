@@ -48,7 +48,6 @@ class Linear(Layer):
     def backward(self, grad: ndarray) -> ndarray:
         # grad is the gradient of output of this layer w.r.t the loss fn.
         # We need to calculate the gradient of the loss fn w.r.t the inputs & weights
-        self.grad["inputs"] = grad @ self.params["w"].T
         self.grad["w"] = self.inputs.T @ grad
         self.grad["b"] = np.sum(grad, axis=0)
-        return self.grad["inputs"]
+        return grad @ self.params["w"].T

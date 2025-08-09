@@ -4,8 +4,11 @@ our Neural Network based on the gradients computed
 during backpropogation.
 """
 
-from quarknet.nn import NeuralNet
+from __future__ import annotations
+from typing import TYPE_CHECKING
 
+if TYPE_CHECKING:
+    from quarknet.nn import NeuralNet
 
 class Optimizer:
     def step(self, net: NeuralNet) -> None:
