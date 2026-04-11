@@ -73,6 +73,12 @@ targets = np.array([
     [0],
 ])
 
+model = NeuralNet([
+    Linear(2, 2),
+    Tanh(),
+    Linear(2, 1)
+])
+
 # Train the model
 model.train(
     inputs=inputs,
