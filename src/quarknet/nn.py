@@ -1,8 +1,5 @@
 """
-A NeuralNet is just a collection/stack of Layers.
-There are more complicated neural networks
-that can not be thought of as a simple stack of layers
-but for our library won't handle them.
+Core NeuralNet class and training loop.
 """
 
 from typing import Sequence, Iterator
@@ -48,6 +45,7 @@ class NeuralNet:
         epochs: int = 5000,
         batch_size: int = 32,
         shuffle: bool = True,
+        verbose: bool = True,
     ) -> None:
         for epoch in range(epochs):
             epoch_loss = 0.0
@@ -60,7 +58,8 @@ class NeuralNet:
                 self.backward(loss_grad)
                 optimizer.step(self)
 
-            print(f"Epoch No: {epoch}, Loss: {epoch_loss}")
+            if verbose:
+                print(f"Epoch No: {epoch}, Loss: {epoch_loss}")
 
     def test(
         self,
@@ -69,7 +68,7 @@ class NeuralNet:
         loss: Loss = MSE(),
         batch_size: int = 32,
         shuffle: bool = True,
-    ):
+    ) -> None:
         total_loss = 0.0
         iterator = BatchIterator(batch_size=batch_size, shuffle=shuffle)
 
