@@ -1,5 +1,5 @@
 """
-Inputs to the Neural Network will go in batches.
+Batching utilities for neural network inputs and targets.
 """
 
 import numpy as np

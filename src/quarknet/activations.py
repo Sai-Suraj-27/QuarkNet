@@ -1,11 +1,11 @@
 """
-Activations apply a function elementwise to the inputs
+Activation layers apply a function elementwise to the inputs.
 """
 
 from typing import Callable
 import numpy as np
 from numpy import ndarray
-from quarknet.layers import Layer
+from .layers import Layer
 
 
 F = Callable[[ndarray], ndarray]
@@ -13,7 +13,7 @@ F = Callable[[ndarray], ndarray]
 
 class Activation(Layer):
     """
-    Activation Layers just apply a function elementwise to it's inputs
+    Activation layer that applies a function elementwise to its inputs.
     """
 
     def __init__(self, f: F, f_grad: F) -> None:
@@ -22,13 +22,10 @@ class Activation(Layer):
         self.f_grad = f_grad
 
     def forward(self, inputs: ndarray) -> ndarray:
-        """ """
         self.inputs = inputs
         return self.f(inputs)
 
     def backward(self, grad: ndarray) -> ndarray:
-        """ """
-
         return grad * self.f_grad(self.inputs)
 
 

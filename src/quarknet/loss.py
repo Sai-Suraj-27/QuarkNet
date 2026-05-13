@@ -1,7 +1,5 @@
 """
-Loss functions measure how good are the predictions
-made by the neural network. We will use this to tune
-the parameters of the neural network.
+Loss functions measure prediction error and expose gradients for training.
 """
 
 import numpy as np
@@ -18,7 +16,7 @@ class Loss:
 
 class MSE(Loss):
     """
-    MSE is the Mean Squared Error.
+    Mean squared error loss.
     """
 
     def __init__(self) -> None:

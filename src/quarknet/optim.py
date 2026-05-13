@@ -1,7 +1,7 @@
 """
 Optimizer is used to modify the parameters of
 our Neural Network based on the gradients computed
-during backpropogation.
+during backpropagation.
 """
 
 from __future__ import annotations

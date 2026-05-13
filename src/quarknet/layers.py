@@ -1,7 +1,5 @@
 """
-Neural Network will be made of layers.
-Each layer will pass the inputs it received forward
-and propogate the gradients coming from it's next layer backward.
+Layer abstractions for manual forward and backward passes.
 """
 
 import numpy as np
@@ -15,24 +13,23 @@ class Layer:
 
     def forward(self, inputs: ndarray) -> ndarray:
         """
-        Return the outputs from the layer corresponding to the inputs
+        Return the layer output for the provided inputs.
         """
         raise NotImplementedError
 
     def backward(self, grad: ndarray) -> ndarray:
         """
-        Backpropogate the gradient coming w.r.t to the output of the layer
-        through the layer and calculates the gradient of the loss fn w.r.t
-        the inputs of the layer & along the way saves the gradient of loss
-        function w.r.t the weights of the layer.
+        Propagate the loss gradient backward through the layer.
+
+        Implementations return the gradient with respect to the inputs and
+        store parameter gradients in ``self.grad``.
         """
         raise NotImplementedError
 
 
 class Linear(Layer):
     """
-    Linear Layers computes
-    output = inputs @ weights + bias
+    Linear layer that computes ``output = inputs @ weights + bias``.
     """
 
     def __init__(self, input_size: int, output_size: int) -> None:
@@ -41,13 +38,11 @@ class Linear(Layer):
         self.params["b"] = np.zeros(output_size)
 
     def forward(self, inputs: ndarray) -> ndarray:
-        # Save a copy of the inputs, to use them during backpropogation
+        # Keep inputs for the manual backward pass.
         self.inputs = inputs
         return inputs @ self.params["w"] + self.params["b"]
 
     def backward(self, grad: ndarray) -> ndarray:
-        # grad is the gradient of output of this layer w.r.t the loss fn.
-        # We need to calculate the gradient of the loss fn w.r.t the inputs & weights
         self.grad["w"] = self.inputs.T @ grad
         self.grad["b"] = np.sum(grad, axis=0)
         return grad @ self.params["w"].T
